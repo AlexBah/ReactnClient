@@ -9,7 +9,6 @@ export default function App() {
   const [textBody, setTextBody] = useState("-");
 
   var getResponse = () => {
-    console.log(text);
     fetch(text)
     .then(
       response => {
