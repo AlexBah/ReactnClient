@@ -8,6 +8,9 @@ export default function App() {
   const [textBody, setTextBody] = useState("-");
 
   let getResponse = () => {
+    setTextStatus("-");
+    setTextHeaders("-");
+    setTextBody("-");
     fetch(urlFetch)
     .then(response => {
       setTextStatus(response.status);
@@ -19,7 +22,7 @@ export default function App() {
       return response.text();
     })
     .then(result => setTextBody(result))
-    .catch(error => setTextBody(error))
+    .catch(error => setTextBody(toString(error)));
   };
 
   return (
@@ -43,6 +46,7 @@ export default function App() {
 
 const styles = StyleSheet.create({
   container: {
+    marginTop: 50,
     flex: 1,
     backgroundColor: '#000',
   },
@@ -80,5 +84,4 @@ const styles = StyleSheet.create({
     fontSize: 20,
     color: '#0e0',
   },
-
 });
